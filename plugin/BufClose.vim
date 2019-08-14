@@ -58,13 +58,6 @@ function! BufClose(buffer, bang)
     let current_window = winnr()
     let buffer_window = bufwinnr(buffer)
 
-    if buffer_window == -1
-        echohl ErrorMsg
-        echomsg "Buffer" buffer "isn't open in any windows."
-        echohl None
-        return
-    endif
-
     if a:bang == '' && getbufvar(buffer, '&modified')
         echohl ErrorMsg
         echomsg 'No write since last change for buffer'
